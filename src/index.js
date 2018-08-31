@@ -1,1 +1,2 @@
-console.log('Some code...');
+const test = ()=>'some code';
+console.log(test());

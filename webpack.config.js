@@ -1,5 +1,6 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
+const MiniCSSExtract = require('mini-css-extract-plugin');
 
 const basePath = __dirname;
 const distPath = 'dist';
@@ -38,7 +39,7 @@ const webpackInitConfig = {
         test: /\.css/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCSSExtract.loader,
           'css-loader',
           'postcss-loader',
         ],
@@ -47,7 +48,7 @@ const webpackInitConfig = {
         test: /\.less/,
         exclude: /node_modules/,
         use: [
-          'style-loader',
+          MiniCSSExtract.loader,
           'css-loader',
           'postcss-loader',
           'less-loader',
@@ -59,6 +60,10 @@ const webpackInitConfig = {
     new HTMLWebpackPlugin({
       filename: indexOutput,
       template: indextInput,
+    }),
+    new MiniCSSExtract({
+      filename: '[name].css',
+      chunkFilename: '[id].css',
     }),
   ],
 };

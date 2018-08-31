@@ -1,6 +1,7 @@
 const path = require('path');
 const HTMLWebpackPlugin = require('html-webpack-plugin');
 const MiniCSSExtract = require('mini-css-extract-plugin');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 const basePath = __dirname;
 const distPath = 'dist';
@@ -9,8 +10,8 @@ const indextInput = './src/index.html';
 const indexOutput = 'index.html';
 
 const webpackInitConfig = {
-  mode: 'development',
-  devtool: 'inline-source-map',
+  mode: 'production',
+  devtool: 'none',
   resolve: {
     extensions: ['.js', '.ts'],
   },
@@ -41,8 +42,8 @@ const webpackInitConfig = {
         exclude: /node_modules/,
         use: [
           MiniCSSExtract.loader,
-          { loader: 'css-loader', options: { sourceMap: true } },
-          { loader: 'postcss-loader', options: { sourceMap: true } },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
         ],
       },
       {
@@ -50,9 +51,9 @@ const webpackInitConfig = {
         exclude: /node_modules/,
         use: [
           MiniCSSExtract.loader,
-          { loader: 'css-loader', options: { sourceMap: true } },
-          { loader: 'postcss-loader', options: { sourceMap: true } },
-          { loader: 'less-loader', options: { sourceMap: true } },
+          { loader: 'css-loader' },
+          { loader: 'postcss-loader' },
+          { loader: 'less-loader' },
         ],
       },
       {
@@ -78,6 +79,7 @@ const webpackInitConfig = {
       filename: '[name].css',
       chunkFilename: '[id].css',
     }),
+    new OptimizeCssAssetsPlugin(),
   ],
 };
 

@@ -10,7 +10,7 @@ const indexOutput = 'index.html';
 const webpackInitConfig = {
   mode: 'development',
   resolve: {
-    extensions: ['.js']
+    extensions: ['.js','.ts']
   },
   entry: {
     app: ['./src/index.js']
@@ -25,6 +25,11 @@ const webpackInitConfig = {
         test: /\.js/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        test: /\.ts/,
+        exclude: /node_modules/,
+        use: ['ts-loader']
       }
     ]
   },

@@ -43,6 +43,16 @@ const webpackInitConfig = {
           'postcss-loader',
         ],
       },
+      {
+        test: /\.less/,
+        exclude: /node_modules/,
+        use: [
+          'style-loader',
+          'css-loader',
+          'postcss-loader',
+          'less-loader',
+        ],
+      },
     ],
   },
   plugins: [

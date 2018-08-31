@@ -1,5 +1,5 @@
 import { foo } from './lib.ts';
-import './index.css';
+import './index.less';
 
 const test = () => 'some code';
 console.log(test());

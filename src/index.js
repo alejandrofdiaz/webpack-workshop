@@ -1,6 +1,8 @@
-import { foo } from './lib';
+import { foo } from './lib.ts';
 
 const test = () => 'some code';
 console.log(test());
 
-console.log(foo('test'));
+const testtIng = 'test';
+
+console.log(foo(testtIng));

@@ -10,35 +10,38 @@ const indexOutput = 'index.html';
 const webpackInitConfig = {
   mode: 'development',
   resolve: {
-    extensions: ['.js','.ts']
+    extensions: ['.js', '.ts'],
   },
   entry: {
-    app: ['./src/index.js']
+    app: ['./src/index.js'],
   },
   output: {
     path: path.join(basePath, distPath),
-    filename: '[chunkhash][name].js'
+    filename: '[chunkhash][name].js',
   },
   module: {
     rules: [
       {
         test: /\.js/,
         exclude: /node_modules/,
-        use: ['babel-loader']
+        use: [
+          'babel-loader',
+          'eslint-loader',
+        ],
       },
       {
         test: /\.ts/,
         exclude: /node_modules/,
-        use: ['ts-loader']
-      }
-    ]
+        use: ['ts-loader'],
+      },
+    ],
   },
   plugins: [
     new HTMLWebpackPlugin({
       filename: indexOutput,
-      template: indextInput
-    })
-  ]
+      template: indextInput,
+    }),
+  ],
 };
 
 module.exports = webpackInitConfig;

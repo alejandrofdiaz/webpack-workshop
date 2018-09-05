@@ -6,5 +6,8 @@ module.exports = {
     },
     "globals": {
         "ENV": true,
+    },
+    "rules": {
+        'linebreak-style': 0
     }
 };
